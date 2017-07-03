@@ -1,22 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using System.Linq;
 
-public class MasterDataManager : MonoBehaviour
+public class MasterDataManager 
+	: SingletonMonoBehaviour<MasterDataManager>
 {
 	[SerializeField]
 	private List<MstCharacter> characterTable = new List<MstCharacter>();
-
-	private void Start()
+	public List<MstCharacter> CharacterTable { get { return characterTable; } }
+	// キャラクターをIDで引っ張れるようにしておく
+	public MstCharacter GetCharacterById(int id)
 	{
-		var characterCSV = Resources.Load("CSV/Character.csv") as TextAsset;
-		var csv = CSVReader.SplitCsvGrid(characterCSV.text);
-		for (int i=1; i<csv.GetLength(1)-1; i++) 
-		{
-			var data = new MstCharacter();
-			data.SetFromCSV( GetRaw(csv, i) );
-			characterTable.Add(data);
-		}
+		return characterTable.Find(c => c.ID == id);
+	}
+
+	// PublishしてゲットしたURL
+	const string csvUrl = "https://docs.google.com/spreadsheets/d/1mYUT577B26EFcw9ifaXWbMMoUHvbkR_NyHYdh3dc94k/pub?gid=605974578&single=true&output=csv";
+
+	// GameManagerから呼んでもらう
+	public void LoadData(UnityAction onFinish)
+	{
+		ConnectionManager.instance.ConnectionAPI(
+			csvUrl, 
+			(string result) => {
+				var csv = CSVReader.SplitCsvGrid(result);
+				for (int i=1; i<csv.GetLength(1)-1; i++) 
+				{
+					var data = new MstCharacter();
+					data.SetFromCSV( GetRaw(csv, i) );
+					characterTable.Add(data);
+				}
+				onFinish();
+			}
+		);
 	}
 
 	private string[] GetRaw (string[,] csv, int row) {
