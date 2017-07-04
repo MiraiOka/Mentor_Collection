@@ -192,8 +192,9 @@ GameObject:
   - component: {fileID: 202950781}
   - component: {fileID: 202950783}
   - component: {fileID: 202950782}
+  - component: {fileID: 202950784}
   m_Layer: 0
-  m_Name: MentorPurchasePanel
+  m_Name: MentorPurchaseView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,6 +252,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 202950780}
+--- !u!114 &202950784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 202950780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03df0f759e034447a519c38a8fb0c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mentorPurchaseCellPrefab: {fileID: 1130070370874846, guid: ce39083fb65f14e569d0ceaad0a34520,
+    type: 2}
+  scrollContent: {fileID: 2114902331}
 --- !u!1 &269860144
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,7 +1394,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1184013504}
   - component: {fileID: 1184013503}
-  - component: {fileID: 1184013505}
   m_Layer: 0
   m_Name: MasterDataManager
   m_TagString: Untagged
@@ -1412,18 +1426,6 @@ Transform:
   m_Father: {fileID: 509642219}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1184013505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1184013502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4a95530e41cb48db9cef6d61ca5a8e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterTable: []
 --- !u!1 &1305681859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,6 +2054,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130070370874846, guid: ce39083fb65f14e569d0ceaad0a34520, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce39083fb65f14e569d0ceaad0a34520, type: 2}
