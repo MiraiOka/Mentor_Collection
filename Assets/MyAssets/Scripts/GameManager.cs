@@ -4,6 +4,7 @@ using System.Collections;
 public class GameManager
 	: SingletonMonoBehaviour<GameManager>
 {
+
 	private void Start()
 	{
 		MasterDataManager.instance.LoadData(() => 
