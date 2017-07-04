@@ -9,6 +9,9 @@ public class GameManager
 		MasterDataManager.instance.LoadData(() => 
 			{
 				print("ロード終わったお");
+				// このラムダ式の部分、後で書き換えるつもりで書いてます。
+				var purchaseView = GameObject.FindObjectOfType<MentorPurchaseView>();
+				purchaseView.SetCells();
 			});
 	}
 
