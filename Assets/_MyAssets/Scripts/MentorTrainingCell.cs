@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
-// 追記
 using UniRx;
 
 public class MentorTrainingCell : MonoBehaviour
@@ -23,8 +21,16 @@ public class MentorTrainingCell : MonoBehaviour
 
 	private Character characterData;
 
-	// 追記
 	private User User { get { return GameManager.instance.User; } }
+
+	// 追記
+	private AvatarController avatar
+	{
+		get
+		{
+			return AvatarManager.instance.GetAvatar(characterData.UniqueID);
+		}
+	}
 
 	public void SetValue(Character data)
 	{
@@ -38,7 +44,6 @@ public class MentorTrainingCell : MonoBehaviour
 
 		levelUpButton.onClick.AddListener(() =>
 			{
-				// 追記
 				var cost = CulcLevelUpCost();
 				if (User.Money.Value < cost) return;
 				if (characterData.IsLevelMax) return;
@@ -52,10 +57,11 @@ public class MentorTrainingCell : MonoBehaviour
 		});
 
 		vrButton.onClick.AddListener(() => {
-			// VRViewを作ってないのでまだ
+			// 追記
+			if (avatar == null) return;
+			DeviceManager.instance.ToVR(avatar);
 		});
 
-		// 所持金のIntReactiveProperty化で対応しておく予定の部分
 		if (User.Money.Value < CulcLevelUpCost()) levelUpButtonGroup.alpha = 0.5f;
 		User.Money.Subscribe(value => {
 			if (characterData.IsLevelMax) return;
@@ -65,7 +71,6 @@ public class MentorTrainingCell : MonoBehaviour
 
 	private int CulcLevelUpCost()
 	{
-		// 編集
 		return MasterDataManager.instance.GetConsumptionMoney (characterData);
 	}
 
