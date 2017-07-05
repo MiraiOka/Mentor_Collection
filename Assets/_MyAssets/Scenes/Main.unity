@@ -164,11 +164,6 @@ Transform:
   m_Father: {fileID: 1663695541}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &269860149 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4026305875547268, guid: 9a11b2a2ec8274041a3e98ef57c83c81,
-    type: 2}
-  m_PrefabInternal: {fileID: 1429297825}
 --- !u!1 &348933061
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,53 +267,6 @@ MonoBehaviour:
     money:
       value: 0
     characters: []
---- !u!1001 &561689775
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4912325417211796, guid: 87c3a32e2f5ac4c2f87b760bcd0ae4fe, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912325417211796, guid: 87c3a32e2f5ac4c2f87b760bcd0ae4fe, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.028
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912325417211796, guid: 87c3a32e2f5ac4c2f87b760bcd0ae4fe, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -1.816
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912325417211796, guid: 87c3a32e2f5ac4c2f87b760bcd0ae4fe, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912325417211796, guid: 87c3a32e2f5ac4c2f87b760bcd0ae4fe, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912325417211796, guid: 87c3a32e2f5ac4c2f87b760bcd0ae4fe, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912325417211796, guid: 87c3a32e2f5ac4c2f87b760bcd0ae4fe, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4912325417211796, guid: 87c3a32e2f5ac4c2f87b760bcd0ae4fe, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114212064434319378, guid: 87c3a32e2f5ac4c2f87b760bcd0ae4fe,
-        type: 2}
-      propertyPath: mainCameraPoint
-      value: 
-      objectReference: {fileID: 269860149}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 87c3a32e2f5ac4c2f87b760bcd0ae4fe, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &671644302
 GameObject:
   m_ObjectHideFlags: 0
