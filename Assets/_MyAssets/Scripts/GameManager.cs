@@ -21,6 +21,7 @@ public class GameManager
 		MasterDataManager.instance.LoadData(() => 
 			{
 				PortrateUIManager.instance.Setup();
+				AvatarManager.instance.Setup();
 			});
 
 		// 追記

@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
-// 追記
 using UniRx;
 
 public class MentorPurchaseCell : MonoBehaviour
@@ -44,9 +42,11 @@ public class MentorPurchaseCell : MonoBehaviour
 				SoldView();
 				var chara = user.NewCharacter(characterData);
 				PortrateUIManager.instance.MentorTrainingView.AddCharacter(chara);
+
+				// 追記
+				AvatarManager.instance.SpawnAvatar(chara);
 			});
 
-		// 追記
 		user.Money.Subscribe(value => {
 			if (isSold) return;
 			if (value < data.InitialCost) buttonGroup.alpha = 0.5f;
