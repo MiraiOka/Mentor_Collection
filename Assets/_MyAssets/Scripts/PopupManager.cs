@@ -12,9 +12,11 @@ public class PopupManager
 		}
 	}
 
-	// PrefabをInspectorで紐付け
+	// Prefabを手動で紐付け
 	[SerializeField]
-	private GameObject commonPopup;
+	private GameObject 
+	commonPopup,
+	descriptionPopup; // 追記
 
 	private List<IPopupController> popupList = new List<IPopupController>();
 
@@ -31,10 +33,18 @@ public class PopupManager
 		popupController.Open(null);
 	}
 
+	// 追記
+	public void OpenDescription (Character data, UnityAction onCloseFinish = null) {
+		var popup = CreatePopup( descriptionPopup );
+		var popupController = popup.GetComponent<DescriptionPopupController>();
+		popupController.SetValue( data, onCloseFinish );
+		popupList.Add( popupController );
+		popupController.Open(null);
+	}
+
 	public GameObject CreatePopup (GameObject prefab) {
 		GameObject popup = Instantiate( prefab );
 		popup.transform.SetParentWithReset( this.transform );
 		return popup;
 	}
-
 }

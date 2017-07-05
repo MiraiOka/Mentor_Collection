@@ -20,10 +20,8 @@ public class MentorTrainingCell : MonoBehaviour
 	[SerializeField] private CanvasGroup levelUpButtonGroup;
 
 	private Character characterData;
+	private static User User { get { return GameManager.instance.User; } }
 
-	private User User { get { return GameManager.instance.User; } }
-
-	// 追記
 	private AvatarController avatar
 	{
 		get
@@ -39,7 +37,10 @@ public class MentorTrainingCell : MonoBehaviour
 		iconImage.sprite = Resources.Load<Sprite>("Face/" + master.ImageId);
 		nameLabel.text = master.Name;
 		rarityLabel.text = "";
-		for (var i = 0; i < master.Rarity; i++) { rarityLabel.text += "★"; }
+		for (var i = 0; i < master.Rarity; i++)
+		{
+			rarityLabel.text += "★";
+		}
 		UpdateValue();
 
 		levelUpButton.onClick.AddListener(() =>
@@ -52,12 +53,17 @@ public class MentorTrainingCell : MonoBehaviour
 				UpdateValue();
 			});
 
+		// 追記
 		discriptionButton.onClick.AddListener(() => {
-			// Descriptionを表示させるところを作ってないのでまだ
+			if (avatar == null) return;
+			MainCameraController.instance.ToZoomIn(avatar, () => { 
+				PopupManager.instance.OpenDescription(characterData, () => {
+					MainCameraController.instance.ToZoomOut();
+				});
+			});
 		});
 
 		vrButton.onClick.AddListener(() => {
-			// 追記
 			if (avatar == null) return;
 			DeviceManager.instance.ToVR(avatar);
 		});
@@ -81,10 +87,7 @@ public class MentorTrainingCell : MonoBehaviour
 		productivityLabel.text = string.Format("生産性 : ¥ {0:#,0} /tap", characterData.Power);
 		var cost = CulcLevelUpCost();
 		costLabel.text = string.Format("¥{0:#,0}", cost);
-
-		// ifの条件を編集
 		if (User.Money.Value < cost) levelUpButtonGroup.alpha = 0.5f;
-
 		else levelUpButtonGroup.alpha = 1.0f;
 		if (characterData.IsLevelMax) 
 		{
