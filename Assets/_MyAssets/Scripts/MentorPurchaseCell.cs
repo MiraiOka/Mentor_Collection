@@ -42,8 +42,7 @@ public class MentorPurchaseCell : MonoBehaviour
 				SoldView();
 				var chara = user.NewCharacter(characterData);
 				PortrateUIManager.instance.MentorTrainingView.AddCharacter(chara);
-
-				// 追記
+				AvatarManager.instance.SpawnAvatar(chara);
 				PopupManager.instance.OpenCommon(characterData.Name+"が入社しました！");
 			});
 
